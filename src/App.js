@@ -9,11 +9,11 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [Tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     Axios.get("https://jsonplaceholder.typicode.com/todos").then((response) => {
-      setTasks(console.log(response.data));
+      setTasks(response.data);
     }).catch((error => {
       console.error("error to get the list", error)
     }))
@@ -23,8 +23,19 @@ function App() {
       <Navbar></Navbar>
       {/* <EditTask></EditTask>
       <AddTask /> */}
-      <Task></Task>
+     
+      <div className="container">
+      <h1>My Todo List</h1>
 
+      
+      <ul>
+        {tasks.map((task) => (
+          <Task key={task.id} task={task} />
+        ))}
+      </ul>
+
+      
+    </div>
       <DeleteConfirmation />
     </>
   );
