@@ -33,15 +33,21 @@ function AddTask({ onAdd, onCancel }) {
               id="task"
               placeholder="Add your new task here"
               value={newTaskTitle}
-              onChange={(e)=>setNewTaskTitle(e.target.value)}
+              onChange={(e) => setNewTaskTitle(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Add
-          </button>
-          <button type="button" onClick={onCancel} className="btn btn-secondary">
-          Cancel
-        </button>
+          <div className="d-flex justify-content-end mx-4 my-4 justify-content-sm-center">
+            <button type="submit" className="btn btn-primary">
+              Add
+            </button>
+            <button
+              type="button"
+              onClick={onCancel}
+              className="btn btn-secondary"
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </>

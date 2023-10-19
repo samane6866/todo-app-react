@@ -1,3 +1,4 @@
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Navbar from "./components/Navbar.js";
@@ -31,16 +32,15 @@ function App() {
       id: tasks.length + 1,
       title: newTaskName,
       completed: false,
-    }
+    };
 
-    setTasks([newTask, ...tasks]); 
+    setTasks([newTask, ...tasks]);
 
-  
     setShowAddTask(false);
-    }
-   
+  };
+
   const handleEditTask = (taskId) => {
-    console.log('Editing task with ID:', taskId);
+    console.log("Editing task with ID:", taskId);
     const taskToEdit = tasks.find((task) => task.id === taskId);
     if (taskToEdit) {
       setEditingTask(taskToEdit);
@@ -49,7 +49,6 @@ function App() {
   const handleSaveTask = (taskId, editedTitle) => {
     const updatedTasks = tasks.map((task) =>
       task.id === taskId ? { ...task, title: editedTitle } : task
-      
     );
     setTasks(updatedTasks);
     setEditingTask(null);
@@ -58,45 +57,62 @@ function App() {
     setEditingTask(null);
   };
 
-
   const handleDeleteTask = (taskId) => {
     const updatedTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(updatedTasks);
   };
-  
-
 
   return (
     <>
       <Navbar></Navbar>
-     
+      <div className="container py-2 d-flex align-items-center"
+
+>
+  {showAddTask ? (
+    <AddTask
+      onAdd={handleAddTask}
+      onCancel={() => setShowAddTask(false)}
+    />
+  ) : (
+    <button onClick={() => setShowAddTask(true)} className="bg-secondary text-white fw-bold p-2">
+      + New To Do
+    </button>
+  )}
+</div>
       {editingTask && (
         <EditTask
-        task={editingTask}
-        onSave={handleSaveTask}
-        onCancel={handleCancelEdit}
-      />
-     )} 
-      {/* <AddTask />  */}
-      <Router>
-        <div className="container">
-          <h1>My Todo List</h1>
-          {showAddTask ? (
-        <AddTask onAdd={handleAddTask} onCancel={() => setShowAddTask(false)} />
-      ) : (
-        <button onClick={() => setShowAddTask(true)} className="bg-info">
-          + New To Do
-        </button>
+          task={editingTask}
+          onSave={handleSaveTask}
+          onCancel={handleCancelEdit}
+        />
       )}
 
-          <ul>
-            {tasks.map((task) => (
-              <Task key={task.id} task={task} onEdit={handleEditTask} onDelete={handleDeleteTask} />
-            ))}
-          </ul>
+      <Router>
+        <div className="container bg-secondary py-2 d-flex justify-content-between align-items-center ">
+        <span className="mx-3 text-white fw-bold">ID</span>
+         
+          <span className=" me-4 text-white fw-bold">TITLE</span> 
+          <span className="me-5 fs-6 text-white fw-bold ">COMPLETED</span> 
+          
+           
+            
+          </div>
+        <div className="container bg-light">
+
+         
+
+          {tasks.map((task, index) => (
+            <Task
+              key={task.id}
+              task={task}
+              onEdit={handleEditTask}
+              onDelete={handleDeleteTask}
+              taskId={index + 1}
+            />
+          ))}
         </div>
-        
       </Router>
+
     </>
   );
 }
