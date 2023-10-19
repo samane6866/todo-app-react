@@ -1,7 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
 
-function EditTask() {
+function EditTask({ task, onSave, onCancel }) {
+  const [editedTask, setEditedTask] = useState(task ? task.title : '');
+
+  if (!task) {
+    return null;
+  }
+  
+ 
     return (
         <div className="container py-5 my-5 h-100 bg-light border rounded">
         <form>
@@ -18,11 +26,18 @@ function EditTask() {
               className="form-control form-control-lg mx-4"
               id="task"
               placeholder="Edit your task"
+              value={editedTask}
+              onChange={(e)=>setEditedTask(e.target.value)}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+          <div className='d-flex justify-content-end mx-4 my-4'>
+          <button type="submit"  onClick={() => onSave(task.id, editedTask)} className="btn btn-primary mx-3 px-4">
+         Save
+            </button>
+            <button type="submit"  onClick={onCancel} className="btn btn-primary">
+            {onCancel}Cancel
+            </button>
+          </div>
         </form>
       </div>
 
