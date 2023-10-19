@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar.js";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./Router";
-// import AddTask from "./components/AddTask.js";
+import AddTask from "./components/AddTask.js";
 import EditTask from "./components/EditTask.js";
 import Task from "./components/Task.js";
 import DeleteConfirmation from "./components/DeleteConfirmation.js";
@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [tasks, setTasks] = useState([]);
   const [editingTask, setEditingTask] = useState(null);
+  const [showAddTask, setShowAddTask] = useState(false);
 
   useEffect(() => {
     Axios.get("https://jsonplaceholder.typicode.com/todos")
@@ -25,6 +26,19 @@ function App() {
       });
   }, []);
 
+  const handleAddTask = (newTaskName) => {
+    const newTask = {
+      id: tasks.length + 1,
+      title: newTaskName,
+      completed: false,
+    }
+
+    setTasks([newTask, ...tasks]); 
+
+  
+    setShowAddTask(false);
+    }
+   
   const handleEditTask = (taskId) => {
     console.log('Editing task with ID:', taskId);
     const taskToEdit = tasks.find((task) => task.id === taskId);
@@ -67,7 +81,13 @@ function App() {
       <Router>
         <div className="container">
           <h1>My Todo List</h1>
-          <button className="bg-info">+ New To dO</button>
+          {showAddTask ? (
+        <AddTask onAdd={handleAddTask} onCancel={() => setShowAddTask(false)} />
+      ) : (
+        <button onClick={() => setShowAddTask(true)} className="bg-info">
+          + New To Do
+        </button>
+      )}
 
           <ul>
             {tasks.map((task) => (
