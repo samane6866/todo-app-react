@@ -65,7 +65,7 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <div className="container py-2 d-flex align-items-center"
+      <div className="container py-2 d-flex justify-content-end p-0"
 
 >
   {showAddTask ? (
@@ -74,7 +74,7 @@ function App() {
       onCancel={() => setShowAddTask(false)}
     />
   ) : (
-    <button onClick={() => setShowAddTask(true)} className="bg-secondary text-white fw-bold p-2">
+    <button onClick={() => setShowAddTask(true)} className="bg-info text-white fw-bold p-2 rounded">
       + New To Do
     </button>
   )}
@@ -88,7 +88,7 @@ function App() {
       )}
 
       <Router>
-        <div className="container bg-secondary py-2 d-flex justify-content-between align-items-center ">
+        <div className="container bg-secondary py-2 d-flex justify-content-between align-items-center rounded">
         <span className="mx-3 text-white fw-bold">ID</span>
          
           <span className=" me-4 text-white fw-bold">TITLE</span> 
@@ -100,7 +100,8 @@ function App() {
         <div className="container bg-light">
 
          
-
+          
+        
           {tasks.map((task, index) => (
             <Task
               key={task.id}
@@ -110,6 +111,7 @@ function App() {
               taskId={index + 1}
             />
           ))}
+          
         </div>
       </Router>
 

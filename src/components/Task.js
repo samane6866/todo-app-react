@@ -47,7 +47,7 @@ function Task(props) {
             </div>
           <div className="d-flex align-items-center">
             <input
-              className="form-check-input mt-0 me-4"
+              className={`form-check-input mt-0 me-4 ${isCompleted ? 'bg-success' : ''}`}
               type="checkbox"
               onChange={handleCheckboxChange}
                 value=""
@@ -55,16 +55,16 @@ function Task(props) {
               aria-label="Checkbox for following text input"
               style={{ width: "25px", height: "25px" }}
               />
-              <div className="d-flex justify-content-evenly ms-2">
+              <div className="d-flex justify-content-evenly ">
             <span onClick={() => onEdit(id)}  >
-            <FontAwesomeIcon icon="fa-solid fa-pen-to-square" size="xl"  />
+            <FontAwesomeIcon icon="fa-solid fa-pen-to-square" size="xl"  className="text-warning"  />
             </span>
             <span
                 onClick={handleDeleteConfirmation}
                 
               className="me-2 mx-1"
             >
-              <FontAwesomeIcon icon="fa-solid fa-trash-can"  size="xl"  />
+              <FontAwesomeIcon icon="fa-solid fa-trash-can" className="text-secondary"  size="xl"  />
                 </span>
               </div>
           </div>

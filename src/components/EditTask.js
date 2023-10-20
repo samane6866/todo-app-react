@@ -12,16 +12,17 @@ function EditTask({ task, onSave, onCancel }) {
   
  
     return (
-        <div className="container py-5 my-5 h-100 bg-light border rounded">
+        <div className="container p-3  bg-light rounded">
         <form>
-          <div className="text-center mb-3 d-flex flex-row justify-content-center">
-            <h2 className="">EditTask</h2>
+          <div className="text-center mb-3 d-flex justify-content-center">
+            <h2 className="fs-4">EditTask</h2>
             
           </div>
-          <div className="form-group d-flex align-items-center">
-            <label htmlFor="task">
+          <label htmlFor="task" className='fw-bold mx-4'>
               Titel
             </label>
+          <div className="form-group d-flex align-items-center">
+            
             <input
               type="text"
               className="form-control form-control-lg mx-4"
@@ -31,17 +32,17 @@ function EditTask({ task, onSave, onCancel }) {
               onChange={(e)=>setEditedTask(e.target.value)}
             />
           </div>
-          <div className='d-flex justify-content-end mx-4 my-4 justify-content-sm-center'>
-          <button type="submit"  onClick={() => onSave(task.id, editedTask)} className="btn btn-primary mx-3 px-4">
+          <div className='d-flex justify-content-center my-4'>
+          <button type="submit"  onClick={() => onSave(task.id, editedTask)} className="btn btn-info mx-2 text-white fw-bold">
          Save
             </button>
-            <button type="submit"  onClick={onCancel} className="btn btn-primary">
+            <button type="submit"  onClick={onCancel} className="btn btn-secondary mx-2 text-white fw-bold">
             {onCancel}Cancel
             </button>
           </div>
         </form>
       </div>
-
+      
 
     )
 
