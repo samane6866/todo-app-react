@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 function DeleteConfirmation({onDelete, onCancel}) {
-    return (
-      <div className="container-md bg-secondary text-light
+  return (
+       // A container for the delete confirmation 
+      <div className="container-sm bg-secondary text-light
          delete-confirmation p-3 rounded">
         <p className="text-center mb-4">
          <FontAwesomeIcon icon="fa-solid fa-triangle-exclamation" size="xl"className="text-warning mx-1 fw-bold"/> Are you sure you want to delete the task?</p>

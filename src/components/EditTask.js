@@ -4,8 +4,11 @@ import { useState } from 'react';
 
 
 function EditTask({ task, onSave, onCancel }) {
+  // State to manage the edited task title
   const [editedTask, setEditedTask] = useState(task ? task.title : '');
 
+  
+  // If there's no task provided, return nothing
   if (!task) {
     return null;
   }
