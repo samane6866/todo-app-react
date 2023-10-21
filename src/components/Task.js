@@ -60,13 +60,13 @@ function Task(props) {
               value=""
               checked={isCompleted}
               aria-label="Checkbox for following text input"
-              style={{ width: "25px", height: "25px" }}
+              style={{ width: "20px", height: "20px" }}
             />
             <div className="d-flex justify-content-evenly ">
               <span onClick={() => onEdit(id)}>
                 <FontAwesomeIcon
                   icon="fa-solid fa-pen-to-square"
-                  size="xl"
+                  size="lg"
                   className="text-warning"
                 />
               </span>
@@ -74,7 +74,7 @@ function Task(props) {
                 <FontAwesomeIcon
                   icon="fa-solid fa-trash-can"
                   className="text-secondary"
-                  size="xl"
+                  size="lg"
                 />
               </span>
             </div>

@@ -93,15 +93,15 @@ function App() {
         />
       )}
 
-      <div className="container bg-secondary py-2 d-flex justify-content-between align-items-center rounded">
-        <span className="mx-3 text-white fw-bold">ID</span>
+      <div className="container bg-secondary py-2 d-flex justify-content-between align-items-center rounded-top">
+        <span className="mx-3  text-sm text-white fw-bold ">ID</span>
 
-        <span className=" me-4 text-white fw-bold">TITLE</span>
-        <span className="me-5 fs-6 text-white fw-bold ">COMPLETED</span>
+        <span className=" me-4 text-white fw-bold text-sm">TITLE</span>
+        <span className="me-5 text-sm text-white fw-bold ">COMPLETED</span>
       </div>
       <div className="container bg-light">
         {tasks.map((task, index) => (
-          <Task
+          <Task 
             key={task.id}
             task={task}
             onEdit={handleEditTask}
