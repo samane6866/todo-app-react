@@ -7,10 +7,10 @@ function DeleteConfirmation({onDelete, onCancel}) {
   return (
        // A container for the delete confirmation 
       <div className="container-sm bg-secondary text-light
-         delete-confirmation p-3 rounded">
+        p-3 rounded">
         <p className="text-center mb-4">
          <FontAwesomeIcon icon="fa-solid fa-triangle-exclamation" size="xl"className="text-warning mx-1 fw-bold"/> Are you sure you want to delete the task?</p>
-        <div className="delete-buttons d-flex flex-row align-items-center justify-content-center mx-4 my-4">
+        <div className="d-flex flex-row align-items-center justify-content-center mx-4 my-4">
           <button onClick={onDelete} className="btn btn-danger mx-5 btn-sm fw-bold">
             Delete
           </button>

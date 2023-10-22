@@ -9,7 +9,7 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 
 function App() {
-  // State to manage the list of tasks
+  // State to manage the list of tasks(an array that holds the list of tasks)
   const [tasks, setTasks] = useState([]);
   // State to manage the task being edited
   const [editingTask, setEditingTask] = useState(null);
@@ -27,19 +27,19 @@ function App() {
         console.error("error to get the list", error);
       });
   }, []);
-  // Function to add a new task
+  // Function to add a new task,take the name of new task as argument,create newtask object with unique Id and finally add to the "task" state.
   const handleAddTask = (newTaskName) => {
     const newTask = {
       id: tasks.length + 1, // Generate a unique ID
       title: newTaskName,
       completed: false, // Initially set as not completed
     };
-    // Update the list of tasks with the new task
+    // Update the list of tasks with the new task by spread method.
     setTasks([newTask, ...tasks]);
     // Hide the "Add New Task" form
     setShowAddTask(false);
   };
-  // Find the task to edit based on its ID
+  // Find the task to edit based on its ID,
   const handleEditTask = (taskId) => {
     console.log("Editing task with ID:", taskId);
     const taskToEdit = tasks.find((task) => task.id === taskId);
@@ -47,8 +47,9 @@ function App() {
       setEditingTask(taskToEdit);
     }
   };
+  // handleSaveTask take the task ID and new editedtitle as arguments and within the "map" method iterates through each task  in the "tasks" array.
   const handleSaveTask = (taskId, editedTitle) => {
-    // Update the task with the new title
+    // Update the task with the new title through spread method.
     const updatedTasks = tasks.map((task) =>
       task.id === taskId ? { ...task, title: editedTitle } : task
     );
@@ -101,8 +102,7 @@ function App() {
       </div>
       <div className="container bg-light">
         {tasks.map((task, index) => (
-          <Task 
-            
+          <Task
             key={task.id}
             task={task}
             onEdit={handleEditTask}

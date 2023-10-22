@@ -10,6 +10,7 @@ function Task(props) {
   // State to manage task completion
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [isCompleted, setIsCompleted] = useState(completed);
+
   // Function to show the delete confirmation
   const handleDeleteConfirmation = () => {
     setShowConfirmation(true);
@@ -19,19 +20,18 @@ function Task(props) {
     onDelete(id);
     setShowConfirmation(false);
   };
-  
+
   // Function to cancel the delete task
   const handleCancelDelete = () => {
     setShowConfirmation(false);
   };
-  // Function to handle checkbox state changes
+  // Function to handle checkbox, "isCompleted" state,changing the completion status of the task.
   const handleCheckboxChange = () => {
     setIsCompleted(!isCompleted);
   };
 
   return (
     <div className="bg-light p-3 mb-3 d-flex justify-content-between align-items-center">
-      {" "}
       {taskId}
       {showConfirmation ? (
         <DeleteConfirmation
