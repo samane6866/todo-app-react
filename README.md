@@ -22,4 +22,6 @@
 In future updates,I have plan to implement the following features and improvements:
 
 - **React Router Integration:**  Implementing React Router for navigation and creating multiple views and routes within the application.
+- **Priority Levels:** Implement task prioritization,mark tasks as "high," "medium," or "low" priority.
+- **Task Categorization:** organize tasks into categories or labels.
 

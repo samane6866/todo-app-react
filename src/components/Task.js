@@ -19,6 +19,7 @@ function Task(props) {
     onDelete(id);
     setShowConfirmation(false);
   };
+  
   // Function to cancel the delete task
   const handleCancelDelete = () => {
     setShowConfirmation(false);

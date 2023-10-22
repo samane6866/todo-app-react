@@ -102,6 +102,7 @@ function App() {
       <div className="container bg-light">
         {tasks.map((task, index) => (
           <Task 
+            
             key={task.id}
             task={task}
             onEdit={handleEditTask}
